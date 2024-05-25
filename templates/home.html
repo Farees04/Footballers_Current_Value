@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Information</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='home.css') }}">
+</head>
+<body>
+    <h1>Player Info & stats</h1>
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+
+
+        <div class="mb-3">
+            <label class="form-label">Position :</label>
+            <select class="form-control" name="position" placeholder="Enter player's position" required>
+            
+                <option class="placeholder" selected disabled value="">Select players's position</option>
+
+
+                <option value="Goalkeeper">
+                    Goalkeeper
+                </option>
+                
+                <option value="Defender">
+                    Defender
+                </option>
+
+                <option value="Defender Centre-Back">
+                    Centre Back
+                </option>
+
+                <option value="Defender Left-Back">
+                    Left Back
+                </option>
+
+                <option value="Defender Right-Back">
+                    Right Back
+                </option>
+
+                <option value="midfield">
+                    Midfield
+                </option>
+
+                <option value="midfield-DefensiveMidfield">
+                    Defensive Midfield
+                </option>
+
+                <option value="midfield-CentralMidfield">
+                    Central Midfield
+                </option>
+
+                <option value="midfield-AttackingMidfield">
+                    Attacking Midfield
+                </option>
+
+                <option value="midfield-LeftMidfield">
+                    Left Midfield
+                </option>
+        
+                <option value="midfield-RightMidfield">
+                    Right  Midfield
+                </option>
+
+                <option value="Attack">
+                    Attack
+                </option>
+
+                <option value="Attack Centre-Forward">
+                    Centre Forward
+                </option>
+
+                <option value="Attack-LeftWinger">
+                    Left Winger
+                </option>
+
+                <option value="Attack-RightWinger">
+                    Right Winger
+                </option>
+
+                <option value="Attack-SecondStriker">
+                    Second Striker
+                </option>
+
+            </select>
+        </div>
+
+        <div>
+            <label for="height">Height (cm) :</label>
+            <input type="number" step="any" id="height" name="height" required>
+        </div>
+
+        <div>
+            <label for="age">Age :</label>
+            <input type="number" step="any" id="age" name="age" required>
+        </div>
+
+        <div>
+            <label for="appearance">Appearances :</label>
+            <input type="number" step="any" id="appearance" name="appearance" required>
+        </div>
+
+        <div>
+            <label for="goals">Goals :</label>
+            <input type="number" step="any" id="goals" name="goals" required>
+        </div>
+
+        <div>
+            <label for="assists">Assists :</label>
+            <input type="number" step="any" id="assists" name="assists" required>
+        </div>
+
+        <div>
+            <label for="yellow_cards">Yellow Cards :</label>
+            <input type="number" step="any" id="yellow_cards" name="yellow_cards" required>
+        </div>
+
+        <div>
+            <label for="second_yellow_cards">Second Yellow Cards :</label>
+            <input type="number" step="any" id="second_yellow_cards" name="second_yellow_cards" required>
+        </div>
+
+        <div>
+            <label for="red_cards">Red Cards :</label>
+            <input type="number" step="any" id="red_cards" name="red_cards" required>
+        </div>
+
+        <div>
+            <label for="minutes_played">Minutes Played :</label>
+            <input type="number" step="any" id="minutes_played" name="minutes_played" required>
+        </div>
+
+        <div>
+            <label for="days_injured">Days Injured :</label>
+            <input type="number" step="any" id="days_injured" name="days_injured" required>
+        </div>
+
+        <div>
+            <label for="games_injured">Games Missed Due to Injury :</label>
+            <input type="number" step="any" id="games_injured" name="games_injured" required>
+        </div>
+
+        <div>
+            <label for="award">Total Award :</label>
+            <input type="number" step="any" id="award" name="award">
+        </div>
+
+        <div>
+            <label for="highest_value">Highest Transfer Value (million) :</label>
+            <input type="number" step="any" id="highest_value" name="highest_value">
+        </div>
+        
+        <div>
+            <label for="goals_conceded">Goals Conceded (Team) :</label>
+            <input type="number" step="any" id="goals_conceded" name="goals_conceded">
+        </div>
+
+        <div>
+            <label for="clean_sheets ">Clean Sheets (Team) :</label>
+            <input type="number" step="any" id="clean_sheets" name="clean_sheets">
+        </div>
+
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict current value" required />
+        </div>
+    </form>
+    
+</body>
+</html>
