@@ -1,14 +1,13 @@
 import os
 import sys
 from dataclasses import dataclass
-from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import r2_score
 import xgboost as xg
 from src.exception import CustomException
 from src.logger import logging
 from src.utils import save_object
 import pandas as pd
-from sklearn import metrics
+
 
 @dataclass
 class ModelTrainerConfig:
