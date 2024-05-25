@@ -37,8 +37,8 @@ class ModelTrainer:
             logging.info(f"Best found model on both training and testing dataset")
             X_train["position"] = X_train["position"].astype("category")
             X_test["position"] = X_test["position"].astype("category")
-            dtrain_reg = xg.DMatrix(X_train, y_train, enable_categorical=True)
-            dtest_reg = xg.DMatrix(X_test, y_test, enable_categorical=True)
+            dtrain_reg = xg.DMatrix(X_train, enable_categorical=True)
+            dtest_reg = xg.DMatrix(X_test, enable_categorical=True)
             params = {"objective": "reg:squarederror",'n_estimators': 200,'learning_rate': 0.1  }
             n = 100
             model = xg.train(
