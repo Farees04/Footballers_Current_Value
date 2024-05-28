@@ -29,24 +29,19 @@ def predict_datapoint():
             yellow_cards=float(request.form.get('yellow_cards')),
             second_yellow_cards=float(request.form.get('second_yellow_cards')),
             red_cards=float(request.form.get('red_cards')),
-            goals_conceded=float(request.form.get('goals_conceded')),
-            clean_sheets=float(request.form.get('clean_sheets')),
             minutes_played=float(request.form.get('minutes_played')),
             days_injured=float(request.form.get('days_injured')),
             games_injured=float(request.form.get('games_injured')),
             award=float(request.form.get('award')),
-            highest_value=float(request.form.get('highest_value'))
+            highest_value=float(request.form.get('highest_value')),
+            goals_conceded=float(request.form.get('goals_conceded')),
+            clean_sheets=float(request.form.get('clean_sheets'))
         )
         pred_df=data.get_data_as_data_frame()
-        print(pred_df)
-        print("Before Prediction")
-
         predict_pipeline=PredictPipeline()
-        print("Mid Prediction")
         results=predict_pipeline.predict(pred_df)
-        print("after Prediction")
         return render_template('end.html',results='{:.2f}'.format(results[0]/1000000))
     
 
 if __name__=="__main__":
-    app.run(host="0.0.0.0",debug=True)      
+    app.run(host="0.0.0.0",debug=False)      
