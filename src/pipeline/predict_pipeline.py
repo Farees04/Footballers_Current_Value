@@ -14,14 +14,10 @@ class PredictPipeline:
         try:
            
             model_path =os.path.join('artifacts',"model.pkl")
-            
-            print("Before Loading")
             model=load_object(file_path=model_path)
-            print("After Loading")
             features["position"] = features["position"].astype("category")
             dtrain_reg = xg.DMatrix(features, enable_categorical=True)
             preds=model.predict(dtrain_reg)
-            print("Loadede")
             return preds
         
         except Exception as e:
