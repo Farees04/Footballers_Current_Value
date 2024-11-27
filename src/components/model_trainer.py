@@ -36,15 +36,18 @@ class ModelTrainer:
             logging.info(f"Best found model on both training and testing dataset")
             X_train["position"] = X_train["position"].astype("category")
             X_test["position"] = X_test["position"].astype("category")
-            dtrain_reg = xg.DMatrix(X_train, enable_categorical=True)
-            dtest_reg = xg.DMatrix(X_test, enable_categorical=True)
-            params = {"objective": "reg:squarederror",'n_estimators': 200,'learning_rate': 0.1  }
-            n = 100
-            model = xg.train(
-            params=params,
-            dtrain=dtrain_reg,
-            num_boost_round=n,)
-            y_pred = model.predict(dtest_reg)
+            # dtrain_reg = xg.DMatrix(X_train,label=y_train, enable_categorical=True)
+            # dtest_reg = xg.DMatrix(X_test,label=y_test, enable_categorical=True)
+            # params = {"objective": "reg:squarederror",'n_estimators': 200,'learning_rate': 0.1  }
+            # n = 100
+            # model = xg.train(
+            # params=params,
+            # dtrain=dtrain_reg,
+            # num_boost_round=n,)
+            # y_pred = model.predict(dtest_reg)
+            model = xg.XGBRegressor(objective="reg:squarederror", learning_rate=0.1, n_estimators=200)
+            model.fit(X_train, y_train)  # Correctly passing y_train here
+            y_pred = model.predict(X_test)
             score = r2_score(y_test, y_pred)*100
             print(" Accuracy of the model is %.2f" %score)
             save_object(
